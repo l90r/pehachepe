@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  db:
+    image: mysql:5.7
+    volumes:
+      - ./db_data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: triogafas
+      MYSQL_DATABASE: triogafas
+      MYSQL_USER: triogafas
+      MYSQL_PASSWORD: triogafas
+  web:
+    build:
+      context: .
+    depends_on:
+      - db
+    image: php:5.6-apache
+    ports:
+      - "8000:80"
+    restart: always
+    volumes:
+        - ./code:/var/www/html
+    environment:
+      APACHE_RUN_USER: www-data
+      APACHE_RUN_GROUP: www-data
+      APACHE_PID_FILE: /var/run/apache2.pid
+      APACHE_RUN_DIR: /var/run/apache2
+      APACHE_LOCK_DIR: /var/lock/apache2
+      APACHE_LOG_DIR: /var/log/apache2
+
+
