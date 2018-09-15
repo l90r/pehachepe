@@ -7,10 +7,10 @@ services:
       - ./db_data:/var/lib/mysql
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: triogafas
-      MYSQL_DATABASE: triogafas
-      MYSQL_USER: triogafas
-      MYSQL_PASSWORD: triogafas
+      MYSQL_ROOT_PASSWORD: pehachepe
+      MYSQL_DATABASE: pehachepe
+      MYSQL_USER: pehachepe
+      MYSQL_PASSWORD: pehachepe
   web:
     build:
       context: .
